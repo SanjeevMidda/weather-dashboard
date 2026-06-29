@@ -1,9 +1,14 @@
 type InputProps = {
   value: string;
   onChange: (value: string) => void;
+  onSearch: (value: string) => void;
 };
 
-const SearchBar = ({ value, onChange }: InputProps) => {
+const SearchBar = ({ value, onChange, onSearch }: InputProps) => {
+  const handleSubmit = () => {
+    onSearch(value);
+  };
+
   return (
     <div className="inputContainer">
       <input
@@ -12,7 +17,7 @@ const SearchBar = ({ value, onChange }: InputProps) => {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <button>Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

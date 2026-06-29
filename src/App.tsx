@@ -19,7 +19,13 @@ function App() {
         <h4>Weather Code: 341 </h4>
       </div>
 
-      <SearchBar value={searchQuery} onChange={setSearchQuery} />
+      <SearchBar
+        value={searchQuery}
+        onChange={setSearchQuery}
+        onSearch={(city) => {
+          console.log("Search requested for: ", city);
+        }}
+      />
     </div>
   );
 }
