@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 120px;
+}
+
+#city {
+  color: grey;
+  font-size: 80px;
+  font-weight: 100;
+}
+h4 {
+  font-size: 12px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+
+.cityWeatherDetails {
+  /* border: 1px solid black; */
+  display: flex;
+  gap: 80px;
+  margin-top: 60px;
+}
