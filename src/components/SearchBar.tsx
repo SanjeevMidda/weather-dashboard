@@ -17,7 +17,7 @@ const SearchBar = ({ value, onChange, onSearch }: InputProps) => {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Get Weather</button>
     </div>
   );
 };
