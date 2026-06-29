@@ -1,6 +1,12 @@
 import "./index.css";
+import SearchBar from "./components/SearchBar";
+import { useState } from "react";
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  console.log(searchQuery);
+
   return (
     <div className="App">
       <h1>WEATHER</h1>
@@ -12,6 +18,8 @@ function App() {
         <h4>Relative Humidity: 10 degrees </h4>
         <h4>Weather Code: 341 </h4>
       </div>
+
+      <SearchBar value={searchQuery} onChange={setSearchQuery} />
     </div>
   );
 }
