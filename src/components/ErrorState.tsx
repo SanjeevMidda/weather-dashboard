@@ -1,7 +1,9 @@
-import useWeather from "../hooks/useWeather";
+type ErrorStateProps = {
+  error: string;
+};
 
-const ErrorState = () => {
-  const { error } = useWeather();
+const ErrorState = ({ error }: ErrorStateProps) => {
+  if (!error) return null;
 
   return <h3>{error}</h3>;
 };
