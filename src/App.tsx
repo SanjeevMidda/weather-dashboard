@@ -2,6 +2,7 @@ import "./index.css";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
 import useWeather from "./hooks/useWeather";
+import WeatherCard from "./components/WeatherCard";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -13,6 +14,7 @@ function App() {
       <h1>WEATHER</h1>
       <h2 id="city">{searchQuery}</h2>
 
+      <WeatherCard weather={weather} />
       <div className="cityWeatherDetails">
         <h4>Temperature: {weather?.temperature} </h4>
         <h4>Wind Speed: {weather?.windSpeed} </h4>
