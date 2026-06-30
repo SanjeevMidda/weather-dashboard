@@ -1,5 +1,5 @@
 // Weather code converter
-export const getWeatherDescription = (code: number): string => {
+const getWeatherDescription = (code: number): string => {
   switch (code) {
     case 0:
       return "Sunny - get those sunglasses!";
@@ -12,4 +12,9 @@ export const getWeatherDescription = (code: number): string => {
     default:
       return "Unknown";
   }
+};
+
+// temperature formatter
+const formatTemperature = (temp: number): string => {
+  return `${temp}°C`;
 };
