@@ -1,7 +1,7 @@
 import { Weather } from "../types/weather";
 
 type WeatherCardProps = {
-  weather: Weather | null;
+  weather: Weather;
   loadingState: string;
   searchQuery: string;
   fetchData: (city: string) => void;
@@ -13,8 +13,6 @@ const WeatherCard = ({
   searchQuery,
   fetchData,
 }: WeatherCardProps) => {
-  if (!weather) return null;
-
   return (
     <>
       <div className="cityWeatherDetails">

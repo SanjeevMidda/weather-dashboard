@@ -18,7 +18,7 @@ function App() {
 
       {loadingState === "loading" && <LoadingState />}
       {loadingState === "error" && error && <ErrorState error={error} />}
-      {loadingState === "successful" && (
+      {loadingState === "successful" && weather && (
         <WeatherCard
           weather={weather}
           loadingState={loadingState}
