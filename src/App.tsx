@@ -7,44 +7,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const { loadingState, weather, error, fetchData } = useWeather();
-  // const fetchData = async (city: string) => {
-  //   if (!city.trim()) return;
-  //   setWeather(null);
-
-  //   try {
-  //     const geoRes = await fetch(
-  //       `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`
-  //     );
-
-  //     if (!geoRes.ok) throw new Error("Geocoding failed");
-
-  //     const geoData = await geoRes.json();
-
-  //     if (!geoData?.results?.length) {
-  //       console.log("No city found");
-  //       return;
-  //     }
-
-  //     const { latitude, longitude } = geoData.results[0];
-
-  //     const weatherRes = await fetch(
-  //       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`
-  //     );
-
-  //     if (!weatherRes.ok) throw new Error("Weather fetch failed");
-
-  //     const weatherData = await weatherRes.json();
-
-  //     setWeather({
-  //       temperature: weatherData.current.temperature_2m,
-  //       windSpeed: weatherData.current.wind_speed_10m,
-  //       relativeHumidity: weatherData.current.relative_humidity_2m,
-  //       weatherCode: weatherData.current.weather_code,
-  //     });
-  //   } catch (error) {
-  //     console.log("Error fetching data", error);
-  //   }
-  // };
 
   return (
     <div className="App">
