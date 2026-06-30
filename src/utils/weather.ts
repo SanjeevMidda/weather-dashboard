@@ -18,3 +18,8 @@ const getWeatherDescription = (code: number): string => {
 const formatTemperature = (temp: number): string => {
   return `${temp}°C`;
 };
+
+// wind speed formatter
+const formatWindSpeed = (windSpeed: number): string => {
+  return `${windSpeed} km/h`;
+};
