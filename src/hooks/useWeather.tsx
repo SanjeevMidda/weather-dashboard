@@ -1,14 +1,7 @@
 import { useState } from "react";
-
+import { Weather } from "../types/weather";
 //TS loading state options
 type LoadingState = "initial" | "loading" | "error" | "successful";
-
-type Weather = {
-  temperature: number;
-  windSpeed: number;
-  relativeHumidity: number;
-  weatherCode: number;
-};
 
 const useWeather = () => {
   const [loadingState, setLoadingState] = useState<LoadingState>("initial");
