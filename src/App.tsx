@@ -17,7 +17,7 @@ function App() {
       <h2 id="city">{searchQuery}</h2>
 
       {loadingState === "loading" && <LoadingState />}
-      {loadingState === "error" && <ErrorState error={error} />}
+      {loadingState === "error" && error && <ErrorState error={error} />}
       {loadingState === "successful" && <WeatherCard weather={weather} />}
 
       <SearchBar
