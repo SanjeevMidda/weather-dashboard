@@ -1,8 +1,4 @@
-type LoadingStateProps = {
-  loading: boolean;
-};
-
-const LoadingState = ({ loading }: LoadingStateProps) => {
+const LoadingState = () => {
   return <h3>Loading...</h3>;
 };
 
