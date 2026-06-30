@@ -1,9 +1,11 @@
-import useWeather from "../hooks/useWeather";
+type loadingStateProps = {
+  loading: boolean;
+};
 
-const LoadingState = () => {
-  const { loadingState } = useWeather();
+const LoadingState = ({ loading }: loadingStateProps) => {
+  if (!loading) return null;
 
-  return <>{loadingState === "loading" ? <h3>Loading...</h3> : null}</>;
+  return <h3>Loading...</h3>;
 };
 
 export default LoadingState;
