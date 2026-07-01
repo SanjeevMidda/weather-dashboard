@@ -5,20 +5,26 @@ type InputProps = {
 };
 
 const SearchBar = ({ value, onChange, onSearch }: InputProps) => {
-  const handleSubmit = () => {
+  // const handleSubmit = () => {
+  //   onSearch(value);
+  // };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
     onSearch(value);
   };
 
   return (
-    <div className="inputContainer">
+    <form className="inputContainer" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Enter city name"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <button onClick={handleSubmit}>Get Weather</button>
-    </div>
+      <button type="submit">Get Weather</button>
+    </form>
   );
 };
 
