@@ -16,6 +16,7 @@ function App() {
       <h1>WEATHER</h1>
       <h2 id="city">{searchQuery}</h2>
 
+      {loadingState === "initial" && <p>Search for a city to see weather</p>}
       {loadingState === "loading" && <LoadingState />}
       {loadingState === "error" && error && <ErrorState error={error} />}
       {loadingState === "successful" && weather && (
