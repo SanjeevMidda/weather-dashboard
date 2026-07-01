@@ -23,3 +23,5 @@ const formatTemperature = (temp: number): string => {
 const formatWindSpeed = (windSpeed: number): string => {
   return `${windSpeed} km/h`;
 };
+
+export { getWeatherDescription, formatTemperature, formatWindSpeed };
