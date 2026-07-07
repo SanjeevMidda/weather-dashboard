@@ -30,9 +30,7 @@ const useWeather = () => {
       const geoData = await geoRes.json();
 
       if (!geoData?.results?.length) {
-        setLoadingState("error");
-        setError("City not found");
-        return;
+        throw new Error("Unable to find city. Please try again.");
       }
 
       const { latitude, longitude } = geoData.results[0];
