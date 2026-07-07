@@ -22,7 +22,7 @@ const WeatherCard = ({
       >
         <h4>Temperature: {weather.temperature} °C</h4>
         <h4>Wind Speed: {weather.windSpeed} km/h</h4>
-        <h4>Relative Humidity: {weather.relativeHumidity}ß%</h4>
+        <h4>Relative Humidity: {weather.relativeHumidity}%</h4>
         <h4>Weather Code: {weather.weatherCode} </h4>
       </section>
       {loadingState === "successful" && (
