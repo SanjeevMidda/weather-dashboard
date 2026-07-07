@@ -3,7 +3,7 @@ type ErrorStateProps = {
 };
 
 const ErrorState = ({ error }: ErrorStateProps) => {
-  return <h3>{error}</h3>;
+  return <h3 role="alert">{error}</h3>;
 };
 
 export default ErrorState;

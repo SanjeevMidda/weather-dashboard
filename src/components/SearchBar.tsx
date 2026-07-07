@@ -19,6 +19,7 @@ const SearchBar = ({ value, onChange, onSearch }: InputProps) => {
     <form className="inputContainer" onSubmit={handleSubmit}>
       <input
         type="text"
+        aria-label="Search for a city"
         placeholder="Enter city name"
         value={value}
         onChange={(e) => onChange(e.target.value)}
