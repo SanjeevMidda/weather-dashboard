@@ -17,9 +17,9 @@ const WeatherCard = ({
   return (
     <>
       <div className="cityWeatherDetails">
-        <h4>Temperature: {weather.temperature} </h4>
-        <h4>Wind Speed: {weather.windSpeed} </h4>
-        <h4>Relative Humidity: {weather.relativeHumidity}</h4>
+        <h4>Temperature: {weather.temperature} °C</h4>
+        <h4>Wind Speed: {weather.windSpeed} km/h</h4>
+        <h4>Relative Humidity: {weather.relativeHumidity} %</h4>
         <h4>Weather Code: {weather.weatherCode} </h4>
       </div>
       {loadingState === "successful" && (
