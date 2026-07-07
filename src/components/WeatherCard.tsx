@@ -1,8 +1,9 @@
 import { Weather } from "../types/weather";
+import { LoadingState } from "../types/loadingState";
 
 type WeatherCardProps = {
   weather: Weather;
-  loadingState: string;
+  loadingState: LoadingState;
   searchQuery: string;
   fetchWeather: (city: string) => void;
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Weather } from "../types/weather";
-
-type LoadingState = "initial" | "loading" | "error" | "successful";
+import { LoadingState } from "../types/loadingState";
 
 const useWeather = () => {
   const [loadingState, setLoadingState] = useState<LoadingState>("initial");
@@ -12,7 +11,11 @@ const useWeather = () => {
   const fetchWeather = async (city: string) => {
     const query = city.trim();
 
-    if (!query) return;
+    if (!query) {
+      setLoadingState("error");
+      setError("Please enter a city name.");
+      return;
+    }
 
     setError(null);
     setWeather(null);
