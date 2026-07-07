@@ -9,7 +9,7 @@ const useWeather = () => {
 
   const [error, setError] = useState<null | string>(null);
 
-  const fetchData = async (city: string) => {
+  const fetchWeather = async (city: string) => {
     const query = city.trim();
 
     if (!query) return;
@@ -62,7 +62,7 @@ const useWeather = () => {
     }
   };
 
-  return { loadingState, error, weather, fetchData };
+  return { loadingState, error, weather, fetchWeather };
 };
 
 export default useWeather;

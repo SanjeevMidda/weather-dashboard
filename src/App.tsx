@@ -9,7 +9,7 @@ import ErrorState from "./components/ErrorState";
 function App() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const { loadingState, weather, error, fetchData } = useWeather();
+  const { loadingState, weather, error, fetchWeather } = useWeather();
 
   return (
     <div className="App">
@@ -23,7 +23,7 @@ function App() {
         <WeatherCard
           weather={weather}
           loadingState={loadingState}
-          fetchData={fetchData}
+          fetchWeather={fetchWeather}
           searchQuery={searchQuery}
         />
       )}
@@ -31,7 +31,7 @@ function App() {
       <SearchBar
         value={searchQuery}
         onChange={setSearchQuery}
-        onSearch={fetchData}
+        onSearch={fetchWeather}
       />
     </div>
   );

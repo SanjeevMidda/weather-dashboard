@@ -4,14 +4,14 @@ type WeatherCardProps = {
   weather: Weather;
   loadingState: string;
   searchQuery: string;
-  fetchData: (city: string) => void;
+  fetchWeather: (city: string) => void;
 };
 
 const WeatherCard = ({
   weather,
   loadingState,
   searchQuery,
-  fetchData,
+  fetchWeather,
 }: WeatherCardProps) => {
   return (
     <>
@@ -22,7 +22,7 @@ const WeatherCard = ({
         <h4>Weather Code: {weather.weatherCode} </h4>
       </div>
       {loadingState === "successful" && (
-        <button onClick={() => fetchData(searchQuery)}>Refresh</button>
+        <button onClick={() => fetchWeather(searchQuery)}>Refresh</button>
       )}
     </>
   );
