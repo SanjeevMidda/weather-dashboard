@@ -21,7 +21,7 @@ const useWeather = () => {
     try {
       const geoRes = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
-          city
+          query
         )}&count=1`
       );
 
