@@ -6,6 +6,7 @@ type LoadingState = "initial" | "loading" | "error" | "successful";
 const useWeather = () => {
   const [loadingState, setLoadingState] = useState<LoadingState>("initial");
   const [weather, setWeather] = useState<Weather | null>(null);
+
   const [error, setError] = useState<null | string>(null);
 
   const fetchData = async (city: string) => {
