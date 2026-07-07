@@ -10,7 +10,9 @@ const useWeather = () => {
   const [error, setError] = useState<null | string>(null);
 
   const fetchData = async (city: string) => {
-    if (!city.trim()) return;
+    const query = city.trim();
+
+    if (!query) return;
 
     setError(null);
     setWeather(null);
@@ -18,7 +20,7 @@ const useWeather = () => {
 
     try {
       const geoRes = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`
+        `https://geocoding-api.open-meteo.com/v1/search?name=${query}&count=1`
       );
 
       if (!geoRes.ok) throw new Error("Geocoding failed");

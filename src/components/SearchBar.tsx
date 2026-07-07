@@ -23,7 +23,9 @@ const SearchBar = ({ value, onChange, onSearch }: InputProps) => {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <button type="submit">Get Weather</button>
+      <button type="submit" disabled={!value.trim()}>
+        Get Weather
+      </button>
     </form>
   );
 };
