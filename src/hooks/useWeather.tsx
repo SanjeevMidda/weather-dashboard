@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Weather } from "../types/weather";
 import { LoadingState } from "../types/loadingState";
-import { getWeather } from "../components/weatherService";
+import { getWeather } from "../services/weatherService";
 
 const useWeather = () => {
   const [loadingState, setLoadingState] = useState<LoadingState>("initial");
