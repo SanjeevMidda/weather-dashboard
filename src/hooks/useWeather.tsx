@@ -1,71 +1,113 @@
 import { useState } from "react";
 import { Weather } from "../types/weather";
 import { LoadingState } from "../types/loadingState";
+import { getWeather } from "../components/weatherService";
 
 const useWeather = () => {
   const [loadingState, setLoadingState] = useState<LoadingState>("initial");
+
   const [weather, setWeather] = useState<Weather | null>(null);
 
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchWeather = async (city: string) => {
-    const query = city.trim();
-
-    if (!query) {
+    if (!city.trim()) {
       setLoadingState("error");
       setError("Please enter a city name.");
       return;
     }
 
-    setError(null);
-    setWeather(null);
     setLoadingState("loading");
+    setError(null);
 
     try {
-      const geoRes = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
-          query
-        )}&count=1`
-      );
+      const weather = await getWeather(city);
 
-      if (!geoRes.ok) throw new Error("Unable to search for city.");
-
-      const geoData = await geoRes.json();
-
-      if (!geoData?.results?.length) {
-        throw new Error("Unable to find city. Please try again.");
-      }
-
-      const { latitude, longitude } = geoData.results[0];
-
-      const weatherRes = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`
-      );
-
-      if (!weatherRes.ok) throw new Error("Unable to fetch weather data.");
-
-      const weatherData = await weatherRes.json();
-
-      setWeather({
-        temperature: weatherData.current.temperature_2m,
-        windSpeed: weatherData.current.wind_speed_10m,
-        relativeHumidity: weatherData.current.relative_humidity_2m,
-        weatherCode: weatherData.current.weather_code,
-      });
-
+      setWeather(weather);
       setLoadingState("successful");
     } catch (error) {
       setLoadingState("error");
 
       if (error instanceof Error) {
         setError(error.message);
-      } else {
-        setError("An unknown error occurred");
       }
     }
   };
 
-  return { loadingState, error, weather, fetchWeather };
+  return {
+    loadingState,
+    weather,
+    error,
+    fetchWeather,
+  };
 };
 
 export default useWeather;
+
+// const useWeather = () => {
+//   const [loadingState, setLoadingState] = useState<LoadingState>("initial");
+//   const [weather, setWeather] = useState<Weather | null>(null);
+
+//   const [error, setError] = useState<null | string>(null);
+
+//   const fetchWeather = async (city: string) => {
+//     const query = city.trim();
+
+//     if (!query) {
+//       setLoadingState("error");
+//       setError("Please enter a city name.");
+//       return;
+//     }
+
+//     setError(null);
+//     setWeather(null);
+//     setLoadingState("loading");
+
+//     try {
+//       const geoRes = await fetch(
+//         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
+//           query
+//         )}&count=1`
+//       );
+
+//       if (!geoRes.ok) throw new Error("Unable to search for city.");
+
+//       const geoData = await geoRes.json();
+
+//       if (!geoData?.results?.length) {
+//         throw new Error("Unable to find city. Please try again.");
+//       }
+
+//       const { latitude, longitude } = geoData.results[0];
+
+//       const weatherRes = await fetch(
+//         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`
+//       );
+
+//       if (!weatherRes.ok) throw new Error("Unable to fetch weather data.");
+
+//       const weatherData = await weatherRes.json();
+
+//       setWeather({
+//         temperature: weatherData.current.temperature_2m,
+//         windSpeed: weatherData.current.wind_speed_10m,
+//         relativeHumidity: weatherData.current.relative_humidity_2m,
+//         weatherCode: weatherData.current.weather_code,
+//       });
+
+//       setLoadingState("successful");
+//     } catch (error) {
+//       setLoadingState("error");
+
+//       if (error instanceof Error) {
+//         setError(error.message);
+//       } else {
+//         setError("An unknown error occurred");
+//       }
+//     }
+//   };
+
+//   return { loadingState, error, weather, fetchWeather };
+// };
+
+// export default fetchWeather;
